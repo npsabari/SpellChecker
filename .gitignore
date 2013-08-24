@@ -1,0 +1,17 @@
+doc/
+lib/
+obj/
+bin/
+*.swp
+*.swo
+*.pyc
+*.o
+*.so
+*~
+*.png
+web/settings.py
+.project
+.pydevproject
+.classpath
+.settings/
+Graphs/
