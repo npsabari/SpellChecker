@@ -4,6 +4,7 @@ import java.util.Vector;
 
 import algorithm.Soundex;
 import dataStructure.BKTree;
+import dataStructure.Trie;
 import distance.Dameraulevenshtein;
 
 public class Main {
@@ -23,7 +24,7 @@ public class Main {
 		
 		//Checking BK-Tree
 		String[] wordList = new String[] { "remote", "barn", "book", "glass",
-				"chair", "closet", "skull", "giraffe", "boat", "soda" };
+				"chair", "closet", "skull", "giraffe", "boat", "soda", "safari" };
 
 		BKTree bkTree = new BKTree();
 
@@ -39,6 +40,12 @@ public class Main {
 		searchTerm = "bar";
 		System.out.println("Best match for search '" + searchTerm + "' = "
 				+ bkTree.bestMatchWord(searchTerm));
+		
+		//Checking Trie
+		Trie obj = new Trie();
+		
+		obj.addAllWords(new Vector<String>(Arrays.asList(wordList)));
+		System.out.println(obj.getSimilarSoundexWords("sabari"));
 	}
 
 }
