@@ -53,6 +53,7 @@ public class Trie {
 	private class Node{
 		private final Character charKey;
 		private final String value;
+		// Store the actual words instead of Soundex hash
 		private final List<String> words;
 		private Map<String, Trie.Node> children;
 		

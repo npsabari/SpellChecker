@@ -8,7 +8,7 @@ import distance.Dameraulevenshtein;
 public class BKTree {
 	private Node rootElement;
 	private HashMap<String, Integer> bestMatches;
-	private final int maxEditDistance = 3;
+	private final int maxEditDistance = 2;
 	private String bestMatch;
 
 	public BKTree() {
@@ -18,11 +18,12 @@ public class BKTree {
 
 	public void addAllStrings(List<String> words) {
 		for (String word : words) {
-			this.addElement(word);
+			this.addElement(word.toUpperCase());
 		}
 	}
 
 	public void addElement(String word) {
+		word = word.toUpperCase();
 		if (rootElement == null) {
 			rootElement = new Node(word);
 		} else {
@@ -31,6 +32,7 @@ public class BKTree {
 	}
 
 	public HashMap<String, Integer> query(String queryWord, int threshold) {
+		queryWord = queryWord.toUpperCase();
 		this.bestMatches = new HashMap<String, Integer>();
 		this.rootElement.query(queryWord, Math.min(maxEditDistance, threshold),
 				this.bestMatches);
@@ -38,6 +40,7 @@ public class BKTree {
 	}
 
 	public HashMap<String, Integer> bestMatchWord(String queryWord) {
+		queryWord = queryWord.toUpperCase();
 		int editDistance = this.rootElement.findBestMatch(queryWord,
 				Integer.MAX_VALUE);
 		HashMap<String, Integer> returnVal = new HashMap<String, Integer>();
@@ -101,17 +104,12 @@ public class BKTree {
 			int editDistance = Dameraulevenshtein.getEditDistance(this.word,
 					queryWord);
 
-			if (editDistance == threshold) {
-				queryResults.put(this.word, editDistance);
-				return;
-			}
-
-			if (editDistance < threshold) {
+			if (editDistance <= threshold) {
 				queryResults.put(this.word, editDistance);
 			}
 
 			for (int score = editDistance - threshold; score <= threshold
-					+ editDistance; score++) {
+					+ editDistance; ++score) {
 				Node child = children.get(score);
 				if (child != null) {
 					child.query(queryWord, threshold, queryResults);
