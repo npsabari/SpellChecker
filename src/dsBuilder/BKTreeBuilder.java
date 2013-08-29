@@ -1,6 +1,7 @@
 package dsBuilder;
 
 import dataStructure.BKTree;
+import fileReader.DictionaryLoader;
 
 public class BKTreeBuilder {
 	public static BKTree bkTree;

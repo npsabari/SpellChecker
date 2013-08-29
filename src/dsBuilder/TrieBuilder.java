@@ -1,11 +1,12 @@
 package dsBuilder;
 
-import dataStructure.Trie;
+import dataStructure.SoundexTrie;
+import fileReader.DictionaryLoader;
 
 public class TrieBuilder {
-	public static Trie trieObj;
+	public static SoundexTrie trieObj;
 	public static void builder(){
-		trieObj = new Trie();
+		trieObj = new SoundexTrie();
 		long startTime = System.nanoTime();
 		trieObj.addAllWords(DictionaryLoader.wordList);
 		long duration = System.nanoTime() - startTime;

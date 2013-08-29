@@ -4,10 +4,13 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Vector;
 
+import algorithm.SegmentWords;
 import algorithm.Soundex;
 import dataStructure.BKTree;
-import dataStructure.Trie;
+import dataStructure.SoundexTrie;
+import dataStructure.StringPair;
 import distance.Dameraulevenshtein;
+import distance.Levenshtein;
 
 public class DSTester {
 	private final String[] wordList = 
@@ -22,7 +25,9 @@ public class DSTester {
 			this.testDamerauDistance();
 			this.testSoundex();
 			this.testBKTree();
-			this.testTrie();
+			this.testSoundexTrie();
+			this.testLevenshtein();
+			this.testSegmentation();
 		}
 	}
 	
@@ -50,9 +55,26 @@ public class DSTester {
 				+ bkTree.bestMatchWord(searchTerm));
 	}
 	
-	public void testTrie() {
-		Trie obj = new Trie();
+	public void testSoundexTrie() {
+		SoundexTrie obj = new SoundexTrie();
 		obj.addAllWords(this.wordVector);
 		System.out.println(obj.getSimilarSoundexWords("sabari"));
+	}
+	
+	public void testLevenshtein() {
+		Levenshtein.getEditDistance("sabru", "safari");
+		for(int[] i : Levenshtein.dp){
+			for(int j : i)
+				System.out.print((j)+" ");
+			System.out.println();
+		}
+		System.out.println(Levenshtein.getOperations());
+		StringPair pa = Levenshtein.getStringAlignment();
+		System.out.println(pa.first+"\n"+ pa.second);
+	}
+	
+	public void testSegmentation() {
+		SegmentWords.segmentTrainingData();
+		System.out.println(SegmentWords.countStore.getStringPairCount(new StringPair("wh", "wa")));
 	}
 }

@@ -7,11 +7,11 @@ import java.util.Vector;
 
 import algorithm.Soundex;
 
-public class Trie {
-	private Trie.Node rootNode;
+public class SoundexTrie {
+	private SoundexTrie.Node rootNode;
 	
-	public Trie() {
-		rootNode = new Trie.Node('\0', "");
+	public SoundexTrie() {
+		rootNode = new SoundexTrie.Node('\0', "");
 	}
 	
 	public void addAllWords(List<String> wordList) {
@@ -20,7 +20,7 @@ public class Trie {
 		}
 	}
 	
-	private void addWord(String word) {
+	public void addWord(String word) {
 		Node currentNode = rootNode;
 		String queryWord = Soundex.getSoundex(word);
 		
@@ -38,11 +38,11 @@ public class Trie {
 		return queryNode != null ? queryNode.getWordsStored() : null;
 	}
 	
-	public Node getNode(String word) {
+	private Node getNode(String word) {
 		return getSoundexNode(Soundex.getSoundex(word));
 	}
 	
-	public Node getSoundexNode(String word) {
+	private Node getSoundexNode(String word) {
 		Node currentNode = rootNode;
 		for(int i = 0; i < word.length() && currentNode != null; ++i) {
 			currentNode = currentNode.getChild(word.charAt(i));
@@ -55,13 +55,13 @@ public class Trie {
 		private final String value;
 		// Store the actual words instead of Soundex hash
 		private final List<String> words;
-		private Map<String, Trie.Node> children;
+		private Map<String, SoundexTrie.Node> children;
 		
 		public Node(char _charKey, String _value) {
 			charKey = _charKey;
 			value = _value;
 			words = new Vector<String>();
-			children = new HashMap<String, Trie.Node>();
+			children = new HashMap<String, SoundexTrie.Node>();
 		}
 		
 		public void addChild(Node element) {
