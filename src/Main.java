@@ -1,7 +1,9 @@
 import java.io.IOException;
 
 import dsBuilder.BKTreeBuilder;
-import dsBuilder.TrieBuilder;
+import dsBuilder.CorpusCountTrieBuilder;
+import dsBuilder.SegmentCountTrieBuilder;
+import dsBuilder.SoundexTrieBuilder;
 import fileReader.DictionaryLoader;
 import fileReader.TrainingSetLoader;
 import tester.DSTester;
@@ -17,8 +19,11 @@ public class Main {
 
 		DictionaryLoader.loadDictionary();
 		TrainingSetLoader.loadTrainingData();
-		DSTester testObject = new DSTester(true);
-		//BKTreeBuilder.builder();
-		//TrieBuilder.builder();
+		BKTreeBuilder.builder();
+		SoundexTrieBuilder.builder();
+		SegmentCountTrieBuilder.builder();
+		CorpusCountTrieBuilder.builder();
+		
+		//DSTester testObject = new DSTester(true);
 	}
 }

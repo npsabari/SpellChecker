@@ -1,8 +1,8 @@
-package algorithm;
+package dsBuilder;
 
 import java.util.Map;
 
-import dataStructure.SegmentTrie;
+import dataStructure.CountTrie;
 import dataStructure.StringPair;
 import distance.Levenshtein;
 import fileReader.TrainingSetLoader;
@@ -12,17 +12,20 @@ import fileReader.TrainingSetLoader;
  * @author sabari
  *
  */
-public class SegmentWords {
-	public static SegmentTrie countStore;
+public class SegmentCountTrieBuilder {
+	public static CountTrie countStore;
 	
-	public static void segmentTrainingData(){
-		countStore = new SegmentTrie();
+	public static void builder(){
+		countStore = new CountTrie();
+		long startTime = System.nanoTime();
 		for(Map.Entry<String, String> wordPair : TrainingSetLoader.TrainingSet.entrySet()){
-			segmentPair(wordPair.getKey(), wordPair.getValue());
+			segmentStringPair(wordPair.getKey(), wordPair.getValue());
 		}
+		long duration = System.nanoTime() - startTime;
+		System.out.println("Segment Count Trie Building time: "+(duration*1.0/1000000000));
 	}
 		
-	private static void segmentPair(String source, String target){
+	private static void segmentStringPair(String source, String target){
 		Levenshtein.getEditDistance(source, target);
 		StringPair stringAlignment = Levenshtein.getStringAlignment();
 		String correctWordAlignment = stringAlignment.first;

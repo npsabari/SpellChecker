@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SegmentTrie {
-	private SegmentTrie.Node rootNode;
+public class CountTrie {
+	private CountTrie.Node rootNode;
 	
-	public SegmentTrie() {
-		rootNode = new SegmentTrie.Node('\0', "");
+	public CountTrie() {
+		rootNode = new CountTrie.Node('\0', "");
 	}
 	
 	public void addAllWords(List<String> wordList) {
@@ -60,13 +60,13 @@ public class SegmentTrie {
 		private final Character charKey;
 		private final String value;
 		private int count;
-		private Map<String, SegmentTrie.Node> children;
+		private Map<String, CountTrie.Node> children;
 		
 		public Node(char _charKey, String _value) {
 			charKey = _charKey;
 			value = _value;
 			count = 0;
-			children = new HashMap<String, SegmentTrie.Node>();
+			children = new HashMap<String, CountTrie.Node>();
 		}
 		
 		public void addChild(Node element) {

@@ -4,13 +4,13 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Vector;
 
-import algorithm.SegmentWords;
 import algorithm.Soundex;
 import dataStructure.BKTree;
 import dataStructure.SoundexTrie;
 import dataStructure.StringPair;
 import distance.Dameraulevenshtein;
 import distance.Levenshtein;
+import dsBuilder.SegmentCountTrieBuilder;
 
 public class DSTester {
 	private final String[] wordList = 
@@ -74,7 +74,6 @@ public class DSTester {
 	}
 	
 	public void testSegmentation() {
-		SegmentWords.segmentTrainingData();
-		System.out.println(SegmentWords.countStore.getStringPairCount(new StringPair("wh", "wa")));
+		System.out.println(SegmentCountTrieBuilder.countStore.getStringPairCount(new StringPair("wh", "wa")));
 	}
 }
