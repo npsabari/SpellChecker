@@ -3,7 +3,7 @@ package dsBuilder;
 import dataStructure.BKTree;
 import fileReader.DictionaryLoader;
 
-public class BKTreeBuilder {
+public class DictionaryBKTreeBuilder {
 	public static BKTree bkTree;
 	public static void builder(){
 		bkTree = new BKTree();

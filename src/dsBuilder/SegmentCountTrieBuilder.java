@@ -2,8 +2,9 @@ package dsBuilder;
 
 import java.util.Map;
 
+import auxiliaryDataStructure.StringPair;
+
 import dataStructure.CountTrie;
-import dataStructure.StringPair;
 import distance.Levenshtein;
 import fileReader.TrainingSetLoader;
 

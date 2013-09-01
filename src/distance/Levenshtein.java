@@ -1,6 +1,6 @@
 package distance;
 
-import dataStructure.StringPair;
+import auxiliaryDataStructure.StringPair;
 
 public class Levenshtein {
 	private static int insertionCost = 1, deletionCost = 1, substitutionCost = 1;

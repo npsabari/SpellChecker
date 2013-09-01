@@ -1,4 +1,4 @@
-package dataStructure;
+package auxiliaryDataStructure;
 
 public class StringPair{
 	public String first, second;

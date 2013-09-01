@@ -1,6 +1,6 @@
 import java.io.IOException;
 
-import dsBuilder.BKTreeBuilder;
+import dsBuilder.DictionaryBKTreeBuilder;
 import dsBuilder.CorpusCountTrieBuilder;
 import dsBuilder.SegmentCountTrieBuilder;
 import dsBuilder.SoundexTrieBuilder;
@@ -19,7 +19,7 @@ public class Main {
 
 		DictionaryLoader.loadDictionary();
 		TrainingSetLoader.loadTrainingData();
-		BKTreeBuilder.builder();
+		DictionaryBKTreeBuilder.builder();
 		SoundexTrieBuilder.builder();
 		SegmentCountTrieBuilder.builder();
 		CorpusCountTrieBuilder.builder();

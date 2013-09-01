@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.Vector;
 
 import algorithm.Soundex;
+import auxiliaryDataStructure.StringPair;
 import dataStructure.BKTree;
 import dataStructure.SoundexTrie;
-import dataStructure.StringPair;
 import distance.Dameraulevenshtein;
 import distance.Levenshtein;
 import dsBuilder.SegmentCountTrieBuilder;

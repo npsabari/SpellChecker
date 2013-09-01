@@ -4,29 +4,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import auxiliaryDataStructure.StringPair;
-
-public class CountTrie {
-	private CountTrie.Node rootNode;
+public class Trie {
+	private Trie.Node rootNode;
 	
-	public CountTrie() {
-		rootNode = new CountTrie.Node('\0', "");
+	public Trie() {
+		rootNode = new Trie.Node('\0', "");
 	}
 	
 	public void addAllWords(List<String> wordList) {
 		for (String word : wordList) {
 			addWord(word);
 		}
-	}
-	
-	public void addAllWordPairs(List<StringPair> wordPairList) {
-		for(StringPair wordPair : wordPairList) {
-			addWordPair(wordPair);
-		}
-	}
-	
-	public void addWordPair(StringPair wordPair) {
-		addWord(wordPair.first+"#"+wordPair.second);
 	}
 	
 	public void addWord(String queryWord) {
@@ -38,16 +26,12 @@ public class CountTrie {
 			}
 			currentNode = currentNode.getChild(queryWord.charAt(i));
 		}
-		currentNode.addCount();
+		currentNode.setStringIndicator();
 	}
 	
-	public int getStringPairCount(StringPair queryWordPair) {
-		return getStringCount(queryWordPair.first+"#"+queryWordPair.second);
-	}
-	
-	public int getStringCount(String queryWord) {
+	public boolean isStringPresent(String queryWord) {
 		Node queryNode = getNode(queryWord);
-		return queryNode != null ? queryNode.getCount() : 0;
+		return queryNode == null ? false : (queryNode.getStringIndicator());
 	}
 	
 	private Node getNode(String word) {
@@ -61,14 +45,14 @@ public class CountTrie {
 	private class Node{
 		private final Character charKey;
 		private final String value;
-		private int count;
-		private Map<String, CountTrie.Node> children;
+		private boolean stringPresent;
+		private Map<String, Trie.Node> children;
 		
 		public Node(char _charKey, String _value) {
 			charKey = _charKey;
 			value = _value;
-			count = 0;
-			children = new HashMap<String, CountTrie.Node>();
+			stringPresent = false;
+			children = new HashMap<String, Trie.Node>();
 		}
 		
 		public void addChild(Node element) {
@@ -89,12 +73,12 @@ public class CountTrie {
 			return children.get(Character.toString(c));
 		}
 		
-		public int getCount() {
-			return this.count;
+		public boolean getStringIndicator() {
+			return this.stringPresent;
 		}
 		
-		public void addCount() {
-			this.count++;
+		public void setStringIndicator() {
+			this.stringPresent = true;
 		}
 	}
 }
