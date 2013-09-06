@@ -16,7 +16,7 @@ public class CorpusLoader {
 			String line;
 			corpus = new Vector<String>();
 			corpusWords = new Vector<String>();
-			infile = new BufferedReader(new FileReader("./dictionary/wordcorpus"));
+			infile = new BufferedReader(new FileReader("./dictionary/allWords.corpus"));
 			while((line = infile.readLine()) != null ) {
 				corpusWords.add(line);
 				for(int i = 0; i < line.length(); ++i){
