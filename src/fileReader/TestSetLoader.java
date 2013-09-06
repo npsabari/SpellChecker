@@ -16,7 +16,7 @@ public class TestSetLoader {
 			String line;
 			testSet = new Vector<String>();
 			while((line = infile.readLine()) != null ) {
-				testSet.add(line);
+				testSet.add(line.toUpperCase());
 			}
 		}
 		catch (FileNotFoundException e) {
