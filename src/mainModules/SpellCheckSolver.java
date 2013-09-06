@@ -8,8 +8,7 @@ import java.util.PriorityQueue;
 
 import algorithm.GenerateCandidates;
 import auxiliaryDataStructure.StringDoublePair;
-import dsBuilder.DictionaryTrieBuilder;
-
+import dsBuilder.DictionaryBuilder;
 import fileReader.TestSetLoader;
 
 public class SpellCheckSolver {
@@ -36,7 +35,7 @@ public class SpellCheckSolver {
 			pq.add(new StringDoublePair(i, getScore(queryWord, i)));
 		}
 		
-		if (DictionaryTrieBuilder.trieObj.isStringPresent(queryWord)) {
+		if (DictionaryBuilder.trieObj.isStringPresent(queryWord)) {
 			pq.add( new StringDoublePair(queryWord, 1.0));
 		}
 		

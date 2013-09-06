@@ -4,7 +4,7 @@ import dsBuilder.CorpusCountTrieBuilder;
 import dsBuilder.CorpusWordCountTrieBuilder;
 import fileReader.ConfusionMatrixLoader;
 
-public class SpellCheckBaseLine extends SpellCheckSolver {
+public class SpellCheckBaseModel extends SpellCheckSolver {
 
 	protected Double getScore(String misspelledWord, String candidate){
 		int i, j;

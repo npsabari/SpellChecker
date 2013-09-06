@@ -1,7 +1,7 @@
 import java.io.IOException;
 
 import dsBuilder.CorpusCountTrieBuilder;
-import dsBuilder.DictionaryBKTreeBuilder;
+import dsBuilder.DictionaryBuilder;
 import dsBuilder.CorpusWordCountTrieBuilder;
 import dsBuilder.SegmentCountTrieBuilder;
 import dsBuilder.SoundexTrieBuilder;
@@ -22,11 +22,13 @@ public class Main {
 		DictionaryLoader.loadDictionary();
 		TrainingSetLoader.loadTrainingData();
 		CorpusLoader.loadCorpus();
-		DictionaryBKTreeBuilder.builder();
-		SoundexTrieBuilder.builder();
-		SegmentCountTrieBuilder.builder();
+		
+		DictionaryBuilder.builder();
 		CorpusWordCountTrieBuilder.builder();
 		CorpusCountTrieBuilder.builder();
+		SoundexTrieBuilder.builder();
+		SegmentCountTrieBuilder.builder();
+		
 		//DSTester testObject = new DSTester(true);
 	}
 }
