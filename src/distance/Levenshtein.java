@@ -35,7 +35,8 @@ public class Levenshtein {
 				}
 			}
 		}
-		calculateOperations();
+		findOperations();
+		findStringAlignment();
 		return dp[source.length()][target.length()];
 	}
 	
@@ -52,7 +53,7 @@ public class Levenshtein {
 	 * I - Insertion, D - Deletion, S - Substitution, N - No change
 	 * This method prefers Substitution > Deletion > Insertion
 	 */
-	private static void calculateOperations(){
+	private static String findOperations(){
 		int subCost, delCost, insCost, minCost;
 		int i = source.length();
 		int j = target.length();
@@ -75,10 +76,10 @@ public class Levenshtein {
 			}
 		}
 		operations = operation.reverse().toString();
-		getAlignment();
+		return operations;
 	}
 	
-	private static void getAlignment(){
+	private static StringPair findStringAlignment(){
 		StringBuilder _source = new StringBuilder();
 		StringBuilder _target = new StringBuilder();
 		for(int i = 0, j = 0, k = 0; i < operations.length(); ++i) {
@@ -97,6 +98,7 @@ public class Levenshtein {
 				_target.append(target.charAt(k++));
 			}
 		}
-		stringAlignment = new StringPair(_target.toString(), _source.toString());
+		stringAlignment = (new StringPair(_target.toString(), _source.toString()));
+		return stringAlignment;
 	}
 }

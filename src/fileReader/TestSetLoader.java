@@ -9,14 +9,14 @@ import java.util.Vector;
 
 public class TestSetLoader {
 	public static List<String> testSet;
-	public static List<String> loadTestData() throws IOException{
+	public static void loadTestData() throws IOException{
 		BufferedReader infile;
 		try {
-			infile = new BufferedReader(new FileReader("./dictionary/testSet"));
+			infile = new BufferedReader(new FileReader("./Input/testSet"));
 			String line;
 			testSet = new Vector<String>();
 			while((line = infile.readLine()) != null ) {
-				testSet.add(line.toUpperCase());
+				testSet.add(line.toLowerCase());
 			}
 		}
 		catch (FileNotFoundException e) {
@@ -24,6 +24,5 @@ public class TestSetLoader {
 			System.out.println("File Not found!");
 			e.printStackTrace();
 		}
-		return testSet;
 	}
 }

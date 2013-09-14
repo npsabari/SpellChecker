@@ -12,35 +12,31 @@ import dsBuilder.DictionaryBuilder;
 import fileReader.TestSetLoader;
 
 public class SpellCheckSolver {
-	protected List<String> queryWords;
-	protected  Map<String, LinkedHashMap<String, Double> > correctWords;
-	
-	protected void getTestWords() throws IOException {
-		queryWords = TestSetLoader.loadTestData();
-	}
+	public Map<String, LinkedHashMap<String, Double> > correctWords;
 	
 	public void solve() throws IOException{
-		this.getTestWords();
 		correctWords = new LinkedHashMap<String, LinkedHashMap<String, Double> >();
-		for(String i : queryWords) {
+		for(String i : TestSetLoader.testSet) {
 			correctWords.put(i, this.getSolution(i));
 		}
 	}
 	
 	protected LinkedHashMap<String, Double> getSolution(String queryWord) {
 		List<String> candidates = GenerateCandidates.getCandidates(queryWord);
+		System.out.println(candidates);
 		PriorityQueue<StringDoublePair> pq = new PriorityQueue<StringDoublePair>();
 		
 		for(String i : candidates) {
 			pq.add(new StringDoublePair(i, getScore(queryWord, i)));
+			System.out.println("Score of the string "+i+" "+getScore(queryWord, i));
 		}
 		
-		if (DictionaryBuilder.trieObj.isStringPresent(queryWord)) {
+		if (DictionaryBuilder.trieObj.getStringCount(queryWord) > 0) {
 			pq.add( new StringDoublePair(queryWord, 1.0));
 		}
 		
 		LinkedHashMap<String, Double> toRet = new LinkedHashMap<String, Double>();
-		for(int i = 0; i < 3; ++i) {
+		for(int i = 0; i < 3 && !pq.isEmpty(); ++i) {
 			StringDoublePair tmp = pq.poll();
 			toRet.put(tmp.word, tmp.score);
 		}

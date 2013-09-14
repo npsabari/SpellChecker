@@ -18,12 +18,11 @@ public class BKTree {
 
 	public void addAllStrings(List<String> words) {
 		for (String word : words) {
-			this.addElement(word.toUpperCase());
+			this.addElement(word);
 		}
 	}
 
 	public void addElement(String word) {
-		word = word.toUpperCase();
 		if (rootElement == null) {
 			rootElement = new Node(word);
 		} else {
@@ -32,7 +31,6 @@ public class BKTree {
 	}
 
 	public HashMap<String, Integer> query(String queryWord, int threshold) {
-		queryWord = queryWord.toUpperCase();
 		this.bestMatches = new HashMap<String, Integer>();
 		this.rootElement.query(queryWord, Math.min(maxEditDistance, threshold),
 				this.bestMatches);
@@ -40,7 +38,6 @@ public class BKTree {
 	}
 
 	public HashMap<String, Integer> bestMatchWord(String queryWord) {
-		queryWord = queryWord.toUpperCase();
 		int editDistance = this.rootElement.findBestMatch(queryWord,
 				Integer.MAX_VALUE);
 		HashMap<String, Integer> returnVal = new HashMap<String, Integer>();
@@ -51,12 +48,12 @@ public class BKTree {
 	private class Node {
 		String word;
 		HashMap<Integer, Node> children;
-		
-//		public Node() {
-//			// TODO Auto-generated constructor stub
-//			word = new String("");
-//			children = new HashMap<Integer, Node>();
-//		}
+
+		// public Node() {
+		// // TODO Auto-generated constructor stub
+		// word = new String("");
+		// children = new HashMap<Integer, Node>();
+		// }
 
 		public Node(String word) {
 			this.word = word;

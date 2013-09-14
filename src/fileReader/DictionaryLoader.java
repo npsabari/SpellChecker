@@ -16,7 +16,7 @@ public class DictionaryLoader {
 			String line;
 			wordList = new Vector<String>();
 			while((line = infile.readLine()) != null ) {
-				wordList.add(line);
+				wordList.add(line.toLowerCase());
 			}
 		}
 		catch (FileNotFoundException e) {

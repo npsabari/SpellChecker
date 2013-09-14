@@ -18,10 +18,10 @@ public class CorpusLoader {
 			corpusWords = new Vector<String>();
 			infile = new BufferedReader(new FileReader("./dictionary/allWords.corpus"));
 			while((line = infile.readLine()) != null ) {
-				corpusWords.add(line);
+				corpusWords.add(line.toLowerCase());
 				for(int i = 0; i < line.length(); ++i){
-					for(int j = i+1; j <= line.length(); ++j){
-						corpus.add(line.substring(i, j));
+					for(int j = i+1; j <= Math.min(line.length(), i+6); ++j){
+						corpus.add(line.substring(i, j).toLowerCase());
 					}
 				}
 			}

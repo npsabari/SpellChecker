@@ -12,6 +12,6 @@ public class StringDoublePair implements Comparable<StringDoublePair> {
 	@Override
 	public int compareTo(StringDoublePair o) {
 		// TODO Auto-generated method stub
-		return this.score > o.score ? 1 : (this.score == o.score ? 0 : -1);
+		return this.score < o.score ? 1 : (this.score == o.score ? 0 : -1);
 	}
 }

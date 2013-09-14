@@ -16,7 +16,7 @@ public class TrainingSetLoader {
 			TrainingSet = new HashMap<String, String>();
 			while((line = infile.readLine()) != null ) {
 				String[] words = line.split(" ");
-				TrainingSet.put(words[0], words[1]);
+				TrainingSet.put(words[0].toLowerCase(), words[1].toLowerCase());
 			}
 		}
 		catch (FileNotFoundException e) {
