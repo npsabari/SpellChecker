@@ -23,12 +23,12 @@ public class SpellCheckSolver {
 	
 	protected LinkedHashMap<String, Double> getSolution(String queryWord) {
 		List<String> candidates = GenerateCandidates.getCandidates(queryWord);
-		System.out.println(candidates);
+		/*System.out.println(candidates);*/
 		PriorityQueue<StringDoublePair> pq = new PriorityQueue<StringDoublePair>();
 		
 		for(String i : candidates) {
 			pq.add(new StringDoublePair(i, getScore(queryWord, i)));
-			System.out.println("Score of the string "+i+" "+getScore(queryWord, i));
+			/*System.out.println("Score of the string "+i+" "+getScore(queryWord, i));*/
 		}
 		
 		if (DictionaryBuilder.trieObj.getStringCount(queryWord) > 0) {

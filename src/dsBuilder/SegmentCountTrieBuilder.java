@@ -33,8 +33,6 @@ public class SegmentCountTrieBuilder {
 		String misspelledWordAlignment = stringAlignment.second;
 		for(int i = 0, j = 0; i < correctWordAlignment.length() && j < misspelledWordAlignment.length(); ++i, ++j) {
 			if (correctWordAlignment.charAt(i) != misspelledWordAlignment.charAt(j)) {
-					/*&& correctWordAlignment.charAt(i) != '*'
-					&& misspelledWordAlignment.charAt(j) != '*') {*/
 				for(int k = i; k >= Math.max(0, i-2); --k){
 					for(int l = i; l < Math.min(i+3, correctWordAlignment.length()); ++l){
 						StringPair toInsert = new StringPair(correctWordAlignment.substring(k, l+1), misspelledWordAlignment.substring(k, l+1));

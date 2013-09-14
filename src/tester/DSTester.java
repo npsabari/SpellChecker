@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Vector;
 
-import mainModules.SpellCheckBaseModel;
 import mainModules.SpellCheckBrillModel;
 import mainModules.SpellCheckSolver;
 import algorithm.Soundex;
@@ -15,6 +14,7 @@ import dataStructure.SoundexTrie;
 import distance.Dameraulevenshtein;
 import distance.Levenshtein;
 import dsBuilder.SegmentCountTrieBuilder;
+import fileReader.TestSetLoader;
 
 public class DSTester {
 	private final String[] wordList = 
@@ -26,12 +26,12 @@ public class DSTester {
 	
 	public DSTester(boolean testAll) throws IOException {
 		if (testAll) {
-			this.testDamerauDistance();
+			/*this.testDamerauDistance();
 			this.testSoundex();
 			this.testBKTree();
 			this.testSoundexTrie();
 			this.testLevenshtein();
-			this.testSegmentation();
+			this.testSegmentation();*/
 			this.testBrill();
 		}
 	}
@@ -85,8 +85,8 @@ public class DSTester {
 	public void testBrill() throws IOException{
 		SpellCheckSolver testObj = new SpellCheckBrillModel();
 		testObj.solve();
-		System.out.println(testObj.correctWords.get("belive"));
-		System.out.println(testObj.correctWords.get("actuatl"));
-		
+		for(String i : TestSetLoader.testSet){
+			System.out.println(testObj.correctWords.get(i));
+		}
 	}
 }
